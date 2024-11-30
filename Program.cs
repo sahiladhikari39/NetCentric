@@ -1,29 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace assignment1re
+namespace SortingApp
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            int firstNumber = 20, secondNumber = 15;
+            int[] array = { 64, 34, 25, 12, 22, 11, 90 };
 
-            Console.WriteLine("Before swapping:");
-            Console.WriteLine("firstNumber = " + firstNumber);
-            Console.WriteLine("secondNumber = " + secondNumber);
+            Console.WriteLine("Unsorted array:");
+            BubbleSort sorter = new BubbleSort();
+            sorter.PrintArray(array);
 
-            // Swap using the XOR trick
-            firstNumber ^= secondNumber;
-            secondNumber ^= firstNumber;
-            firstNumber ^= secondNumber;
+            sorter.Sort(array);
 
-            Console.WriteLine("\nAfter swapping:");
-            Console.WriteLine("firstNumber = " + firstNumber);
-            Console.WriteLine("secondNumber = " + secondNumber);
+            Console.WriteLine("Sorted array:");
+            sorter.PrintArray(array);
         }
     }
 }
