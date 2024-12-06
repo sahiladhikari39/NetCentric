@@ -1,29 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace assignment1re
+namespace calculator
 {
-    internal class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            int firstNumber = 20, secondNumber = 15;
-
-            Console.WriteLine("Before swapping:");
-            Console.WriteLine("firstNumber = " + firstNumber);
-            Console.WriteLine("secondNumber = " + secondNumber);
-
-            // Swap using the XOR trick
-            firstNumber ^= secondNumber;
-            secondNumber ^= firstNumber;
-            firstNumber ^= secondNumber;
-
-            Console.WriteLine("\nAfter swapping:");
-            Console.WriteLine("firstNumber = " + firstNumber);
-            Console.WriteLine("secondNumber = " + secondNumber);
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
         }
     }
 }
