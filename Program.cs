@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace assignment1re
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            int firstNumber = 20, secondNumber = 15;
-
-            Console.WriteLine("Before swapping:");
-            Console.WriteLine("firstNumber = " + firstNumber);
-            Console.WriteLine("secondNumber = " + secondNumber);
-
-            // Swap using the XOR trick
-            firstNumber ^= secondNumber;
-            secondNumber ^= firstNumber;
-            firstNumber ^= secondNumber;
-
-            Console.WriteLine("\nAfter swapping:");
-            Console.WriteLine("firstNumber = " + firstNumber);
-            Console.WriteLine("secondNumber = " + secondNumber);
-        }
-    }
+    app.UseExceptionHandler("/Home/Error");
 }
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
